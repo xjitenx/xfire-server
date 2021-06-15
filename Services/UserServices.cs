@@ -8,11 +8,12 @@ using xfire_server.Models;
 namespace xfire_server.Services
 {
     public class UserServices
-    {        
+    {
+        string CONNECTION_STRING = "Server = ec2-52-209-134-160.eu-west-1.compute.amazonaws.com; Port = 5432; Database = d6soipr8suh91r; User Id = zndslzuyfzhtek; Password = 01fa22f450cf78926cfe8d788a494833f2dbbe35978838d57165abd7be952987;sslmode = Require;Trust Server Certificate=true;";
         public List<User> getUsers()
         {
             List<User> usersList = new List<User>();
-            using (var connection = new NpgsqlConnection("Server = 127.0.0.1; Port = 5432; Database = xfire; User Id = postgres; Password = manager;"))
+            using (var connection = new NpgsqlConnection(CONNECTION_STRING))
             {
                 //use connection here
                 connection.Open();
@@ -45,7 +46,7 @@ namespace xfire_server.Services
             int numberOfUpdatedRows = 0;
             try
             {
-                using (var connection = new NpgsqlConnection("Server = 127.0.0.1; Port = 5432; Database = xfire; User Id = postgres; Password = manager;"))
+                using (var connection = new NpgsqlConnection(CONNECTION_STRING))
                 {
                     //use connection here
                     connection.Open();
